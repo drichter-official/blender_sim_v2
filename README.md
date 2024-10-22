@@ -47,18 +47,17 @@ This project provides a flexible and extensible framework for automating renderi
    
 2. **Navigate to the Project Directory**:
 
-  ```bash
-  cd blender_sim_v2
-  ```
+   ```bash
+   cd blender_sim_v2
+   ```
 
 
 3. **Prepare and activate the Environment using Conda**:
     
-```bash
-conda env create -f environment.yml
-conda activate blender_sim_v2
-
-```
+   ```bash
+   conda env create -f environment.yml
+   conda activate blender_sim_v2
+   ```
 
 ## Usage
 ### Configuration File
