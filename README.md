@@ -79,6 +79,8 @@ Otherwise you may use arguments to run the script with
 ```
 blender-sim-v2/
 ├── run.py
+├── configs/
+│   └── config.ini
 ├── utils/
 │   ├── camera_setup.py
 │   ├── config_loader.py
@@ -88,10 +90,8 @@ blender-sim-v2/
 │   ├── transform_loader.py
 ├── data/
 │   ├── tissue_data.py         # Contains tissue materials and properties
-│   ├── input/
-│   │   └── your_model.obj
-│   └── configs/
-│       └── config.ini
+│   └── input/
+│       └── your_model.obj
 ├── output/
 └── README.md
 ```
