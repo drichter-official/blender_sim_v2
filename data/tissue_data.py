@@ -30,22 +30,22 @@ tissue_properties_2 = {
 
 tissue_properties = {
     "AIR": {"density": 0.0, "anisotropy": 0.0, "refractive_index": 1.0},
-    "BRAIN": {"density": 0.6096, "anisotropy": 0.9, "refractive_index": 1.36},
-    "FAT": {"density": 0.0941, "anisotropy": 0.9, "refractive_index": 1.46},
-    "HEART": {"density": 2.3221, "anisotropy": 0.9, "refractive_index": 1.36},
-    "KIDNEY": {"density": 0.9483, "anisotropy": 0.9, "refractive_index": 1.36},
-    "LUNG": {"density": 1.1389, "anisotropy": 0.9, "refractive_index": 1.0},
-    "MUSCLE": {"density": 1.3434, "anisotropy": 0.9, "refractive_index": 1.36},
-    "BONE": {"density": 0.5194, "anisotropy": 0.9, "refractive_index": 1.63},
-    "SKIN": {"density":  0.2271, "anisotropy": 0.9, "refractive_index": 1.55},
-    "TENDON": {"density":0.2164, "anisotropy": 0.9, "refractive_index": 1.36},
-    "TUMOR": {"density":1.3434, "anisotropy": 0.9, "refractive_index": 1.40, "emission": 1.0},
+    "BRAIN": {"density": 0.6096, "anisotropy": 0.9, "refractive_index": 1.33},
+    "FAT": {"density": 0.0941, "anisotropy": 0.9, "refractive_index": 1.33},
+    "HEART": {"density": 2.3221, "anisotropy": 0.9, "refractive_index": 1.33},
+    "KIDNEY": {"density": 0.9483, "anisotropy": 0.9, "refractive_index": 1.33},
+    "LUNG": {"density": 1.1389, "anisotropy": 0.9, "refractive_index": 1.33},
+    "MUSCLE": {"density": 1.3434, "anisotropy": 0.9, "refractive_index": 1.33},
+    "BONE": {"density": 0.5194, "anisotropy": 0.9, "refractive_index": 1.33},
+    "SKIN": {"density":  0.2271, "anisotropy": 0.9, "refractive_index": 1.45},
+    "TENDON": {"density":0.2164, "anisotropy": 0.9, "refractive_index": 1.33},
+    "TUMOR": {"density":1.3434, "anisotropy": 0.9, "refractive_index": 1.33, "emission": 1.0},
     "LSO": {"density": 0.048, "anisotropy": 0.624, "refractive_index": 1.82},
-    "TOP": {"density":  0. , "anisotropy": 0.9, "refractive_index": 1.0},
-    "UNDEF": {"density": 1.0, "anisotropy": 0.0, "refractive_index": 1.0}
+    "TOP": {"density":  0. , "anisotropy": 0.9, "refractive_index": 1.33},
+    "UNDEF": {"density": 1.0, "anisotropy": 0.0, "refractive_index": 1.33}
 }
 tissue_properties = {
-    "SKIN": {"density": 0.1, "anisotropy":1, "refractive_index": 1.55}
+    "SKIN": {"density": 0.1, "anisotropy": 0.9, "refractive_index": 1.45}
 }
 
 meshes = {
@@ -69,8 +69,8 @@ meshes = {
     "17-stomach-32": "FAT",  # Closest match: FAT (smooth muscle tissue)
     "18-pancreas-32": "FAT",  #
     "19-spleen-32": "FAT",  # Closest match: FAT (soft tissue)
-    "20-adrenal-gland-L-8": "FAT",  # Closest match: Muscle (soft tissue)
-    "21-adrenal-gland-R-8": "FAT",  # Closest match: Muscle (soft tissue)
+    "20-adrenal-gland-L-8": "FAT",  # Closest match: FAT (soft tissue)
+    "21-adrenal-gland-R-8": "FAT",  # Closest match: FAT (soft tissue)
     "22-kidney-L-24": "KIDNEY",
     "23-kidney-R-24": "KIDNEY",
     "24-bladder-16": "AIR",  # Closest match: AIR if empty (smooth muscle tissue)

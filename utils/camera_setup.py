@@ -13,8 +13,6 @@ def setup_camera(config):
     rotation_euler = config.get('camera_rotation_euler', [1, 0, 0])
     focal_length = config.get('camera_focal_length', 40)
     sensor_size = config.get('camera_sensor_size', 36)
-    clip_start = config.get('camera_clip_start', 0.1)
-    clip_end = config.get('camera_clip_end', 1000.0)
     depth_of_field = config.get('camera_depth_of_field', False)
     dof_focus_distance = config.get('camera_dof_focus_distance', 10.0)
     dof_aperture_fstop = config.get('camera_dof_aperture_fstop', 2.8)
@@ -34,8 +32,6 @@ def setup_camera(config):
     # Set camera properties
     camera.data.lens = focal_length
     camera.data.sensor_width = sensor_size
-    camera.data.clip_start = clip_start
-    camera.data.clip_end = clip_end
 
     # Depth of Field settings
     if depth_of_field:

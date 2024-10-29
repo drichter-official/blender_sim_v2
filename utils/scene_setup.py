@@ -110,8 +110,7 @@ def load_object(config):
 
 def set_scene_units(config):
     scene = bpy.context.scene
-
-    # Set the unit system to 'METRIC' since the examples are metric
+    # Set the unit system to 'METRIC'
     scene.unit_settings.system = 'METRIC'
     units = config.get("scene_units")
     if units == "MILLIMETERS":

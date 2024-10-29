@@ -136,6 +136,9 @@ def load_config(argv):
     )
 
     # Lighting settings
+    config_dict['light_setting'] = get_config_value(
+        config, 'Lighting', 'light_setting', default='external'
+    )
     config_dict['light_positions'] = parse_list_of_float_tuples(
         get_config_value(config, 'Lighting', 'light_positions', default=None)
     )

@@ -48,7 +48,7 @@ def main():
     load_object(config)
 
     # Create and assign materials to the tissues based on predefined properties
-    create_tissue_materials(tissue_list, tissue_properties)
+    create_tissue_materials(config,tissue_list, tissue_properties)
     assign_materials_to_meshes(meshes)
 
     # Set up the camera based on the configuration settings

@@ -2,7 +2,7 @@
 
 import bpy
 
-def create_tissue_materials(tissue_list, tissue_properties):
+def create_tissue_materials(config,tissue_list, tissue_properties):
     """
     Creates materials for each tissue type based on provided properties.
     """
@@ -13,33 +13,36 @@ def create_tissue_materials(tissue_list, tissue_properties):
         nodes = mat.node_tree.nodes
         links = mat.node_tree.links
 
-        # Clear default nodes
-        nodes.clear()
 
-        # Add Principled BSDF node
-        principled_bsdf = nodes.new(type="ShaderNodeBsdfPrincipled")
-        principled_bsdf = nodes.new(type="ShaderNodeBsdfTranslucent")
-        principled_bsdf.location = (0, 0)
+        if config.get('light_setting') == "internal":
+            # Clear default nodes
+            nodes.clear()
+            principled_bsdf = nodes.new(type="ShaderNodeBsdfTranslucent")
+            principled_bsdf.location = (0, 0)
 
-        # Set Base Color (customize as needed)
-        #principled_bsdf.inputs["Base Color"].default_value = (1.0, 1.0, 1.0, 1.0)
+        else:
+            # Add Principled BSDF node
+            principled_bsdf = nodes.new(type="ShaderNodeBsdfPrincipled")
+            principled_bsdf.location = (0, 0)
 
-        # Set properties from tissue_properties
-        #principled_bsdf.inputs["IOR"].default_value = tissue_properties[tissue]["refractive_index"]
-        #principled_bsdf.inputs["Alpha"].default_value = 1
-        #principled_bsdf.inputs["Transmission Weight"].default_value = 1
-        if tissue == "TUMOR":
-            pass
-            #principled_bsdf.inputs["Emission Strength"].default_value = tissue_properties[tissue]["emission"]
-        # Note: Subsurface Anisotropy is not directly available; use Subsurface Scattering if needed
-        #principled_bsdf.inputs["Subsurface Weight"].default_value = 0.5
-        #principled_bsdf.inputs["Subsurface Anisotropy"].default_value = tissue_properties[tissue]["anisotropy"]
+            # Set Base Color (customize as needed)
+            principled_bsdf.inputs["Base Color"].default_value = (1.0, 1.0, 1.0, 1.0)
+
+            # Set properties from tissue_properties
+            principled_bsdf.inputs["IOR"].default_value = tissue_properties[tissue]["refractive_index"]
+            principled_bsdf.inputs["Alpha"].default_value = 1
+            principled_bsdf.inputs["Transmission Weight"].default_value = 1
+            if tissue == "TUMOR":
+                principled_bsdf.inputs["Emission Strength"].default_value = tissue_properties[tissue]["emission"]
+            # Note: Subsurface Anisotropy is not directly available; use Subsurface Scattering if needed
+            principled_bsdf.inputs["Subsurface Weight"].default_value = 0.5
+            principled_bsdf.inputs["Subsurface Anisotropy"].default_value = tissue_properties[tissue]["anisotropy"]
 
         # Add Volume Scatter node
-        #volume_scatter = nodes.new(type="ShaderNodeVolumeScatter")
-        #volume_scatter.location = (0, -400)
-        #volume_scatter.inputs["Density"].default_value = tissue_properties[tissue]["density"]
-        #volume_scatter.inputs["Anisotropy"].default_value = tissue_properties[tissue]["anisotropy"]
+        volume_scatter = nodes.new(type="ShaderNodeVolumeScatter")
+        volume_scatter.location = (0, -400)
+        volume_scatter.inputs["Density"].default_value = tissue_properties[tissue]["density"]
+        volume_scatter.inputs["Anisotropy"].default_value = tissue_properties[tissue]["anisotropy"]
 
         volume_absorption = nodes.new(type="ShaderNodeVolumeAbsorption")
         volume_absorption.location = (0, -400)
@@ -49,10 +52,10 @@ def create_tissue_materials(tissue_list, tissue_properties):
         output_node = nodes.new(type="ShaderNodeOutputMaterial")
         output_node.location = (400, 0)
 
-        # Link nodes
-        links.new(principled_bsdf.outputs["BSDF"], output_node.inputs["Surface"])
-        #links.new(volume_scatter.outputs["Volume"], output_node.inputs["Volume"])
-        links.new(volume_absorption.outputs["Volume"], output_node.inputs["Volume"])
+        if config.get('light_setting') == "internal": #TODO fix the material setup above
+            links.new(principled_bsdf.outputs["BSDF"], output_node.inputs["Surface"])
+            #links.new(volume_scatter.outputs["Volume"], output_node.inputs["Volume"])
+            links.new(volume_absorption.outputs["Volume"], output_node.inputs["Volume"])
 def assign_materials_to_meshes(meshes):
     """
     Assigns materials to meshes based on a mapping of mesh names to tissue names.
