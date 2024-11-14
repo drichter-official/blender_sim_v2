@@ -1,3 +1,5 @@
+# utils/scene_setup.py
+
 import bpy
 import os
 import math

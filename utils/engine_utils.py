@@ -1,4 +1,4 @@
-# render_engine_utils.py
+# utils/render_engine_utils.py
 
 import bpy
 def initialize_engine(config):

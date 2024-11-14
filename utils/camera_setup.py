@@ -1,3 +1,5 @@
+# utils/camera_setup.py
+
 import bpy
 from mathutils import Matrix
 

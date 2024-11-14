@@ -1,4 +1,4 @@
-# material_utils.py
+# utils/material_utils.py
 
 import bpy
 
